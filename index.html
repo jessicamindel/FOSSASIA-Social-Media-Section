@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Social Media UI</title>
+        
+        <link rel="stylesheet" href="css/style.css">
+        
+        <script src="https://code.jquery.com/jquery-3.1.1.min.js" integrity="sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8=" crossorigin="anonymous"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-easing/1.3/jquery.easing.min.js"></script>
+        <script src="js/twitterfetcher.js"></script>
+        <script src="https://use.fontawesome.com/40751fc112.js"></script>
+    </head>
+    
+    <body>
+        <br/>
+        <br/>
+        <div id="social-media">
+            <div id="sm-sidebar">
+                <ul>
+                    <li data-sm="fb">Facebook</li>
+                    <li data-sm="gplus">Google+</li>
+                    <li data-sm="twitter">Twitter</li>
+                    <li data-sm="github">Github</li>
+                    <li data-sm="youtube">Youtube</li>
+                </ul>
+            </div>
+            
+            <div id="sm-pane">
+                <ul>
+                    <li>
+                        <div class="fb panel">
+                            <div class="banner"></div>
+                            <div class="banner-overlay"></div>
+                            <div class="wrapper">
+                                <div class="header">
+                                    <div>Latest Posts<span class="likes"><span class="count">x</span> likes</span></div>
+                                    <img src="http://www.freeiconspng.com/uploads/facebook-logo-png-white-facebook-logo-png-white-facebook-icon-png--32.png"/>
+                                </div>
+                                <div class="line"></div>
+                                <div class="arrows"><button class="left">&lt;</button><button class="right">&gt;</button></div>
+                            </div>
+                        </div>
+                    </li>
+                    <li>
+                        <div class="gplus panel" style="background: yellow"></div>
+                    </li>
+                    <li>
+                        <div class="twitter panel">
+                            <div class="wrapper">
+                                <div class="header">
+                                    <div>Latest Tweets</div>
+                                    <img src="img/twitter-512.gif"/>
+                                </div>
+                                <div class="line"></div>
+                                <div class="arrows"><button class="left">&lt;</button><button class="right">&gt;</button></div>
+                                <div id="sm-tweets" class="tweets"></div>
+                            </div>
+                        </div>
+                    </li>
+                    <li>
+                        <div class="github panel" style="background: gray"></div>
+                    </li>
+                    <li>
+                        <div class="youtube panel" style="background: red"></div>
+                    </li>
+                </ul>
+            </div>
+        </div>
+        
+        <!--<iframe src="//www.facebook.com/plugins/page.php?href=https%3A%2F%2Fwww.facebook.com%2Ffossasia&amp;tabs=timeline&amp;width=370&amp;height=800&amp;small_header=false&amp;adapt_container_width=true&amp;hide_cover=false&amp;show_facepile=true&amp;appId" width="370" style="border:none;overflow:hidden" scrolling="no" frameborder="0" allowtransparency="true"></iframe>-->
+        
+        <script src="script.js"></script>
+    </body>
+</html>

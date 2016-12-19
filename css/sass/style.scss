@@ -1,0 +1,607 @@
+html, body {
+    padding: 0;
+    margin: 0;
+}
+
+body {
+    background: #333;
+    font-family: -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
+}
+
+button:active, button:focus {
+    outline: none;
+    border: none;
+}
+
+// Mixins
+@mixin keyframes($animationName) {
+    @-webkit-keyframes #{$animationName} {
+        @content;
+    }
+    @-moz-keyframes #{$animationName} {
+        @content;
+    }
+    @-o-keyframes #{$animationName} {
+        @content;
+    }
+    @keyframes #{$animationName} {
+        @content;
+    }
+}
+
+@mixin animation($animate...) {
+    $max: length($animate);
+    $animations: '';
+
+    @for $i from 1 through $max {
+        $animations: #{$animations + nth($animate, $i)};
+
+        @if $i < $max {
+            $animations: #{$animations + ", "};
+        }
+    }
+    -webkit-animation: $animations;
+    -moz-animation:    $animations;
+    -o-animation:      $animations;
+    animation:         $animations;
+}
+
+// Social media styles
+#social-media {
+    width: 80%;
+    height: 500px;
+    
+    position: relative;
+    left: 50%;
+    
+    -webkit-transform: translate(-50%);
+        -ms-transform: translate(-50%);
+            transform: translate(-50%);
+    
+    border-radius: 10px;
+    overflow: hidden;
+    
+    background: #BBB;
+    
+    padding: 0;
+    margin: 0;
+    
+    ul {
+        list-style: none;
+        padding-left: 0px;
+    }
+    
+    #sm-sidebar {
+        background: #EEE;
+        
+        width: 20%;
+        height: 100%;
+        
+        position: absolute;
+        left: 0;
+        
+        -webkit-box-shadow: 3px 0px 20px 0px rgba(0,0,0,0.12);
+           -moz-box-shadow: 3px 0px 20px 0px rgba(0,0,0,0.12);
+                box-shadow: 3px 0px 20px 0px rgba(0,0,0,0.12);
+        
+        z-index: 2;
+        
+        overflow-y: scroll;
+        overflow-x: visible;
+        
+        ul {
+            width: 100%;
+        }
+        
+        li {
+            width: 100%;
+            height: 50px;
+            font-size: 18px;
+            
+            line-height: 50px;
+            text-align: center;
+            
+            cursor: pointer;
+            
+            transition: all 0.2s ease-out;
+            
+            @media screen and (max-width: 600px) {
+                font-size: 2.5vw;
+            }
+            
+            &:hover {
+                background: #DDD;
+                height: 80px;
+                font-size: 24px;
+                line-height: 80px;
+                
+                @media screen and (max-width: 600px) {
+                    font-size: 3.2vw;
+                }
+            }
+            
+            &.sm-click {
+                @include animation('darkFlash 1s');
+            }
+        }
+    }
+    
+    #sm-pane {
+        background: #BBB;
+        
+        width: 80%;
+        height: 100%;
+        
+        position: absolute;
+        right: 0;
+        
+        z-index: 1;
+        
+        overflow-y: hidden;
+        overflow-x: hidden;
+        
+        transition: all 0.5s;
+        
+        ul {
+            margin: 0;
+            padding: 0;
+        }
+        
+        li {
+            margin: 0;
+            padding: 0;
+        }
+        
+        div.panel {
+            width: 100%;
+            height: 500px;
+            position: relative;
+            
+            // Wrapper
+            .wrapper {
+                position: absolute;
+                
+                $panel-wrapper-margin: 30px;
+                top: $panel-wrapper-margin;
+                bottom: $panel-wrapper-margin;
+                right: $panel-wrapper-margin;
+                left: $panel-wrapper-margin;
+                
+                width: auto;
+                height: auto;
+            }
+            
+            // Colors
+            $color-twitter: #0084b4;
+            $color-facebook: #3b5998;
+            
+            // Social Media Sections
+            &.twitter {
+                background: $color-twitter;
+                
+                .header {
+                    width: 100%;
+                    height: 50px;
+                    
+                    font-size: 24px;
+                    color: white;
+                    
+                    position: relative;
+                    top: -10px;
+                    
+                    div {
+                        height: 0px;
+                        padding-top: 17px;
+                        
+                        @media screen and (max-width: 600px) {
+                            font-size: 4vw;
+                        }
+                    }
+                    
+                    img {
+                        display: inline-block;
+                        
+                        position: absolute;
+                        top: 0px;
+                        right: 1%;
+                        
+                        width: 80px;
+                        height: 80px;
+                        
+                        @media screen and (max-width: 600px) {
+                            width: 12vw;
+                            height: 12vw;
+                        }
+                    }
+                }
+                
+                .line {
+                    width: 100%;
+                    height: 1px;
+                    background: white;
+                    
+                    position: relative;
+                    left: 50%;
+                    
+                    -webkit-transform: translate(-50%);
+                        -ms-transform: translate(-50%);
+                            transform: translate(-50%);
+                }
+                
+                .tweets {
+                    position: relative;
+                    width: 100%;
+                    height: 380px; // Specific for centering
+                    
+                    ul {
+                        position: relative;
+                        width: inherit;
+                        height: inherit;
+                    }
+                    
+                    // Post card
+                    li {
+                        background: #EEE;
+                        border-radius: 5px;
+                        color: black;
+                        
+                        position: absolute;
+                        display: inline-block;
+                        list-style-type: none;
+                        top: 50%;
+                        transform: translateY(-50%);
+                        
+                        width: 45.7%;
+                        height: 200px;
+                        font-size: 14px;
+                        
+                        transition: all 0.75s ease-in-out;
+                        
+                        @media screen and (max-width: 600px) {
+                            font-size: 2vw;
+                        }
+                        
+                        &.centered {
+                            width: 68.55%;
+                            height: 300px;
+                            left: 50%;
+                            transform: translate(-50%, -50%);
+                            font-size: 18px;
+                            opacity: 1;
+                            
+                            @media screen and (max-width: 600px) {
+                                font-size: 2.25vw;
+                            }
+                            
+                            .wrapper {
+                                left: 45px;
+                            }
+                        }
+                        
+                        &.right {
+                            right: -100%;
+                            
+                            &.up-next {
+                                right: -35%;
+                            }
+                        }
+                        
+                        &.left {
+                            left: -100%;
+                            
+                            &.up-next {
+                                left: -35%;
+                            }
+                        }
+                        
+                        &.up-next {
+                            opacity: 0.5;
+                            cursor: pointer;
+                            
+                            &:hover {
+                                opacity: 0.75;
+                            }
+                        }
+                        
+                        &.final {
+                            text-align: center;
+                            
+                            div {
+                                width: 80%;
+                                position: relative;
+                                left: 50%;
+                                top: 50%;
+                                transform: translate(-50%, -50%);
+                            }
+                        }
+                        
+                        .wrapper {
+                            position: absolute;
+                            $tweet-wrapper-margin: 15px;
+                            top: $tweet-wrapper-margin;
+                            bottom: $tweet-wrapper-margin;
+                            left: $tweet-wrapper-margin;
+                            right: $tweet-wrapper-margin;
+                            
+                            width: auto;
+                            height: auto;
+                            
+                            overflow-x: hidden;
+                            overflow-y: scroll;
+                            
+                            transition: left 0.5s;
+                        }
+                        
+                        // All links
+                        a {
+                            text-decoration: none;
+                            color: $color-twitter; //#2d76eb;
+                            word-wrap: break-word;
+                        }
+                        
+                        // Retweeted triangle
+                        .triangle-wrapper {
+                            width: 50px;
+                            height: 50px;
+                            position: absolute;
+                            top: 0;
+                            right: 0;
+                            border-radius: 5px;
+                            overflow: hidden;
+                        }
+                        
+                        .retweeted-triangle {
+                            width: 0;
+                            height: 0;
+                            border-style: solid;
+                            border-width: 0 45px 45px 0;
+                            border-color: transparent lighten($color-twitter, 25%) transparent transparent;
+                            
+                            position: absolute;
+                            top: 0;
+                            right: 0;
+                            
+                            i {
+                                position: relative;
+                                top: 2px;
+                                right: -20px;
+                            }
+                        }
+                        
+                        // Post author
+                        div[data-scribe="component:author"] {
+                            a[data-scribe="element:user_link"] div {
+                                font-weight: 600;
+                                color: #777;
+                                position: relative;
+                                font-size: 16px;
+                                
+                                @media screen and (max-width: 600px) {
+                                    font-size: 2.25vw;
+                                }
+                                
+                                span:first-child {
+                                    padding-right: 5px;
+                                }
+                            }
+                        }
+                        
+                        div.avatar-wrapper {
+                            width: 150px;
+                            height: 150px;
+                            
+                            position: relative;
+                            left: -75px;
+                            top: -25px;
+                        }
+                        
+                        img[data-scribe="element:avatar"] {
+                            width: 75px;
+                            height: 75px;
+                            border-radius: 50%;
+                            
+                            /*position: relative;
+                            left: -40px;
+                            top: 10px;*/
+                            
+                            position: relative;
+                            left: 50%; top: 50%;
+                            transform: translate(-50%, -50%);
+                            
+                            box-shadow: 0px 3px 5px 0px rgba(0,0,0,0.5);
+
+                            @media screen and (max-width: 600px) {
+                                width: 12vw;
+                                height: 12vw;
+                            }
+                        }
+                        
+                        // Tweet media
+                        .media {
+                            img {
+                                width: 100%;
+                            }
+                        }
+                        
+                        // Tweet time
+                        .timePosted {
+                            color: desaturate($color-twitter, 20%);
+                            font-size: 12px;
+                            
+                            @media screen and (max-width: 600px) {
+                                font-size: 1.8vw;
+                            }
+                        }
+                        
+                        // Tweet interactions
+                        .interact {
+                            a {
+                                margin-right: 5px;
+                                color: lighten($color-twitter, 25%);
+                                transition: color 0.5s;
+                                
+                                &:hover {
+                                    color: $color-twitter;
+                                }
+                            }
+                        }
+                    }
+                }
+                
+                .arrows {
+                    height: 30px;
+                }
+                
+                .arrows button {
+                    width: 40px;
+                    height: 20px;
+                    background: rgba(255, 255, 255, 0.25);
+                    color: white;
+                    border: none;
+                    
+                    margin-top: 5px;
+                    margin-right: 5px;
+                    
+                    transition: all 0.5s;
+                    
+                    &:hover {
+                        background: #FFF;
+                        color: black;
+                    }
+                }
+            }
+            
+            &.fb {
+                background: $color-facebook;
+                
+                .banner {
+                    background-image: url('https://scontent-sjc2-1.xx.fbcdn.net/v/t31.0-8/10658556_940744502619854_4899562564510209042_o.jpg?oh=c2b1921f19373716f8ec198204fca116&oe=58AE8AAF');
+                    background-size: cover;
+                    background-repeat: no-repeat;
+                    background-position: center;
+                    
+                    width: 100%;
+                    height: 120px;
+                    
+                    position: absolute;
+                    top: 0;
+                    left: 0;
+                }
+                
+                .banner-overlay {
+                    width: 100%;
+                    height: 120px;
+                    background: black;
+                    opacity: 0.65;
+                    
+                    position: absolute;
+                    top: 0;
+                    left: 0;
+                }
+                
+                .header {
+                    width: 100%;
+                    height: 50px;
+                    
+                    font-size: 24px;
+                    color: white;
+                    
+                    position: relative;
+                    top: -10px;
+                    
+                    div {
+                        height: 0px;
+                        padding-top: 17px;
+                        
+                        @media screen and (max-width: 600px) {
+                            font-size: 4vw;
+                        }
+                        
+                        span {
+                            margin-left: 10px;
+                            font-size: 18px;
+                            color: lighten($color-facebook, 30%);
+                            
+                            @media screen and (max-width: 600px) {
+                                font-size: 2.5vw;
+                            }
+                        }
+                    }
+                    
+                    img {
+                        display: inline-block;
+                        
+                        position: absolute;
+                        top: -15px;
+                        right: -1%;
+                        
+                        width: 100px;
+                        height: 100px;
+                        
+                        @media screen and (max-width: 600px) {
+                            width: 13vw;
+                            height: 13vw;
+                        }
+                    }
+                }
+                
+                .line {
+                    width: 100%;
+                    height: 1px;
+                    background: white;
+                    
+                    position: relative;
+                    left: 50%;
+                    
+                    -webkit-transform: translate(-50%);
+                        -ms-transform: translate(-50%);
+                            transform: translate(-50%);
+                }
+                
+                .arrows {
+                    height: 30px;
+                }
+                
+                .arrows button {
+                    width: 40px;
+                    height: 20px;
+                    background: rgba(255, 255, 255, 0.25);
+                    color: white;
+                    border: none;
+                    
+                    margin-top: 5px;
+                    margin-right: 5px;
+                    
+                    transition: all 0.5s;
+                    
+                    &:hover {
+                        background: #FFF;
+                        color: black;
+                    }
+                }
+            }
+        }
+    }
+}
+
+@include keyframes(darkFlash) {
+    0% {
+        background: #DDD;
+    }
+    
+    10% {
+        background: #EEE;
+    }
+    
+    15% {
+        background: #BBB;
+    }
+    
+    30% {
+        background: #999;
+    }
+    
+    99% {
+        background: #EEE;
+    }
+}
