@@ -32,9 +32,9 @@ button:active, button:focus {
     height: 100%;
     position: absolute;
     left: 0;
-    -webkit-box-shadow: 3px 0px 20px 0px rgba(0, 0, 0, 0.12);
-    -moz-box-shadow: 3px 0px 20px 0px rgba(0, 0, 0, 0.12);
-    box-shadow: 3px 0px 20px 0px rgba(0, 0, 0, 0.12);
+    -webkit-box-shadow: 3px 0px 20px 0px rgba(0, 0, 0, 0.3);
+    -moz-box-shadow: 3px 0px 20px 0px rgba(0, 0, 0, 0.3);
+    box-shadow: 3px 0px 20px 0px rgba(0, 0, 0, 0.3);
     z-index: 2;
     overflow-y: scroll;
     overflow-x: visible; }
@@ -354,6 +354,105 @@ button:active, button:focus {
           #social-media #sm-pane div.panel.fb .arrows button:hover {
             background: #FFF;
             color: black; }
+      #social-media #sm-pane div.panel.github {
+        background: repeating-linear-gradient(-45deg, #cb593c 8.25%, #cb593c 10%, #a37173 18%, #a37173 20%, #5692ec 28%, #5692ec 30%, #7776eb 38%, #7776eb 40%, #ecaa58 48%, #ecaa58 50%, #cb593c 58%);
+        position: relative;
+        /*.full-name {
+            color: white;
+        }*/
+        /*div.bg {
+            width: 100%;
+            height: 100%;
+            
+            div.top {
+                background: darken($color-github, 15%);
+                width: inherit;
+                height: 200px;
+            }
+            
+            div.bottom {
+                background: darken($color-github, 5%);
+                width: inherit;
+                height: 300px;
+            }
+        }*/ }
+        #social-media #sm-pane div.panel.github div.bg {
+          width: 100%;
+          height: 100%;
+          background: black;
+          opacity: 0.25; }
+        #social-media #sm-pane div.panel.github div.github-widget {
+          position: absolute;
+          border: none;
+          left: 50%;
+          top: 50%;
+          transform: translate(-50%, -50%);
+          background: #EEE;
+          padding: 5px;
+          border-radius: 7.5px;
+          /*.gh-widget-container {
+              color: #1f1f1f;
+          }
+          
+          & > div > div[class^="gh-widget"]:nth-child(1), & > div > div[class^="gh-widget"]:nth-child(2) {
+              color: #666;
+          }*/ }
+          #social-media #sm-pane div.panel.github div.github-widget hr {
+            opacity: 0; }
+      #social-media #sm-pane div.panel.gplus {
+        background: #d34836; }
+        #social-media #sm-pane div.panel.gplus .wrapper > div {
+          width: 369px;
+          height: 430px;
+          border-radius: 10px;
+          overflow: hidden;
+          position: relative;
+          top: 50%;
+          left: 50%;
+          transform: translateX(-50%); }
+      #social-media #sm-pane div.panel.youtube {
+        background: #b31217; }
+        #social-media #sm-pane div.panel.youtube .vid-wrapper {
+          box-shadow: 0px 2px 50px 3px rgba(0, 0, 0, 0.5);
+          margin-top: 30px;
+          height: 80%;
+          width: 100%; }
+        #social-media #sm-pane div.panel.youtube iframe {
+          width: 100%;
+          height: 100%; }
+        #social-media #sm-pane div.panel.youtube .header {
+          width: 100%;
+          height: 50px;
+          font-size: 24px;
+          color: white;
+          position: relative;
+          top: -10px; }
+          #social-media #sm-pane div.panel.youtube .header div {
+            height: 0px;
+            padding-top: 17px; }
+            @media screen and (max-width: 600px) {
+              #social-media #sm-pane div.panel.youtube .header div {
+                font-size: 4vw; } }
+          #social-media #sm-pane div.panel.youtube .header img {
+            display: inline-block;
+            position: absolute;
+            top: 0px;
+            right: 1%;
+            width: 102px;
+            height: 72px; }
+            @media screen and (max-width: 600px) {
+              #social-media #sm-pane div.panel.youtube .header img {
+                width: 16.716vw;
+                height: 11.8vw; } }
+        #social-media #sm-pane div.panel.youtube .line {
+          width: 100%;
+          height: 1px;
+          background: white;
+          position: relative;
+          left: 50%;
+          -webkit-transform: translate(-50%);
+          -ms-transform: translate(-50%);
+          transform: translate(-50%); }
 
 @-webkit-keyframes darkFlash {
   0% {
@@ -399,5 +498,7 @@ button:active, button:focus {
     background: #999; }
   99% {
     background: #EEE; } }
+#social-media #sm-pane div.panel.twitter .tweets li, #social-media #sm-pane div.panel.github div.github-widget, #social-media #sm-pane div.panel.gplus .wrapper > div {
+  box-shadow: 0px 2px 50px 0px rgba(0, 0, 0, 0.5); }
 
 /*# sourceMappingURL=style.css.map */

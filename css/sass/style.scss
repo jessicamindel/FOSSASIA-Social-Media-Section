@@ -13,6 +13,9 @@ button:active, button:focus {
     border: none;
 }
 
+// Github Colors
+@import "../githubcolors.json";
+
 // Mixins
 @mixin keyframes($animationName) {
     @-webkit-keyframes #{$animationName} {
@@ -80,9 +83,9 @@ button:active, button:focus {
         position: absolute;
         left: 0;
         
-        -webkit-box-shadow: 3px 0px 20px 0px rgba(0,0,0,0.12);
-           -moz-box-shadow: 3px 0px 20px 0px rgba(0,0,0,0.12);
-                box-shadow: 3px 0px 20px 0px rgba(0,0,0,0.12);
+        -webkit-box-shadow: 3px 0px 20px 0px rgba(0,0,0,0.3);
+           -moz-box-shadow: 3px 0px 20px 0px rgba(0,0,0,0.3);
+                box-shadow: 3px 0px 20px 0px rgba(0,0,0,0.3);
         
         z-index: 2;
         
@@ -174,6 +177,9 @@ button:active, button:focus {
             // Colors
             $color-twitter: #0084b4;
             $color-facebook: #3b5998;
+            $color-gplus: #d34836;
+            $color-youtube: #b31217;
+            $color-github: #494949;
             
             // Social Media Sections
             &.twitter {
@@ -256,6 +262,8 @@ button:active, button:focus {
                         font-size: 14px;
                         
                         transition: all 0.75s ease-in-out;
+                        
+                        @extend %card-shadow;
                         
                         @media screen and (max-width: 600px) {
                             font-size: 2vw;
@@ -580,6 +588,169 @@ button:active, button:focus {
                     }
                 }
             }
+            
+            &.github {
+                //background: $color-github;
+                
+                // HTML, Java, Objective-C, CSS, Swift
+                
+                $grad-size: 10%;
+                $ds: 20%;
+                $blur: 8;
+  
+                background: repeating-linear-gradient(
+                    -45deg,
+                    desaturate($HTML, $ds)                  $grad-size * ($blur / 10 + 0.025),
+                    desaturate($HTML, $ds)                  $grad-size,
+                    desaturate($D, $ds)                     $grad-size + $blur, // Used to be Shell
+                    desaturate($D, $ds)                     $grad-size * 2,
+                    desaturate($Objective-C, $ds)           $grad-size * 2 + $blur,
+                    desaturate($Objective-C, $ds)           $grad-size * 3,
+                    desaturate($Objective-C-plus-plus, $ds) $grad-size * 3 + $blur, // Was CSS
+                    desaturate($Objective-C-plus-plus, $ds) $grad-size * 4,
+                    desaturate($Swift, $ds)                 $grad-size * 4 + $blur,
+                    desaturate($Swift, $ds)                 $grad-size * 5,
+                    desaturate($HTML, $ds)                  $grad-size * 5 + $blur
+                );
+                
+                position: relative;
+                
+                /*.full-name {
+                    color: white;
+                }*/
+                
+                /*div.bg {
+                    width: 100%;
+                    height: 100%;
+                    
+                    div.top {
+                        background: darken($color-github, 15%);
+                        width: inherit;
+                        height: 200px;
+                    }
+                    
+                    div.bottom {
+                        background: darken($color-github, 5%);
+                        width: inherit;
+                        height: 300px;
+                    }
+                }*/
+                
+                div.bg {
+                    width: 100%;
+                    height: 100%;
+                    background: black;
+                    opacity: 0.3;
+                }
+                
+                div.github-widget {
+                    position: absolute;
+                    border: none;
+                    
+                    left: 50%; top: 50%;
+                    transform: translate(-50%, -50%);
+                    
+                    background: #EEE;
+                    padding: 5px;
+                    border-radius: 7.5px;
+                    
+                    @extend %card-shadow;
+                    
+                    hr {
+                        opacity: 0;
+                    }
+                    
+                    /*.gh-widget-container {
+                        color: #1f1f1f;
+                    }
+                    
+                    & > div > div[class^="gh-widget"]:nth-child(1), & > div > div[class^="gh-widget"]:nth-child(2) {
+                        color: #666;
+                    }*/
+                }
+            }
+            
+            &.gplus {
+                background: $color-gplus;
+                
+                .wrapper > div {
+                    width: 369px;
+                    height: 430px;
+                    border-radius: 10px;
+                    overflow: hidden;
+                    
+                    position: relative;
+                    top: 50%; left: 50%;
+                    transform: translateX(-50%);
+                    
+                    @extend %card-shadow;
+                }
+            }
+            
+            &.youtube {
+                background: $color-youtube;
+                
+                .vid-wrapper {
+                    box-shadow: 0px 2px 50px 3px rgba(0,0,0,0.5);
+                    margin-top: 30px;
+                    height: 80%;
+                    width: 100%;
+                }
+                
+                iframe {
+                    width: 100%;
+                    height: 100%;
+                }
+                
+                .header {
+                    width: 100%;
+                    height: 50px;
+                    
+                    font-size: 24px;
+                    color: white;
+                    
+                    position: relative;
+                    top: -10px;
+                    
+                    div {
+                        height: 0px;
+                        padding-top: 17px;
+                        
+                        @media screen and (max-width: 600px) {
+                            font-size: 4vw;
+                        }
+                    }
+                    
+                    img {
+                        display: inline-block;
+                        
+                        position: absolute;
+                        top: 0px;
+                        right: 1%;
+                        
+                        width: 102px;
+                        height: 72px;
+                        
+                        @media screen and (max-width: 600px) {
+                            width: 16.716vw;
+                            height: 11.8vw;
+                        }
+                    }
+                }
+                
+                .line {
+                    width: 100%;
+                    height: 1px;
+                    background: white;
+                    
+                    position: relative;
+                    left: 50%;
+                    
+                    -webkit-transform: translate(-50%);
+                        -ms-transform: translate(-50%);
+                            transform: translate(-50%);
+                }
+            }
         }
     }
 }
@@ -604,4 +775,8 @@ button:active, button:focus {
     99% {
         background: #EEE;
     }
+}
+
+%card-shadow {
+    box-shadow: 0px 2px 50px 0px rgba(0,0,0,0.5);
 }
