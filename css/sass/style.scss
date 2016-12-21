@@ -681,7 +681,7 @@ button:active, button:focus {
                     
                     position: relative;
                     top: 50%; left: 50%;
-                    transform: translateX(-50%);
+                    transform: translate(-50%, -50%);
                     
                     @extend %card-shadow;
                 }
@@ -754,6 +754,10 @@ button:active, button:focus {
         }
     }
 }
+
+/*.gecko .gplus .wrapper > div {
+    transform: translate(-50%, -50%) !important;
+}*/
 
 @include keyframes(darkFlash) {
     0% {

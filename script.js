@@ -3,10 +3,11 @@ var twitterAvatarSelector = 'img[data-scribe="element:avatar"]';
 var screenName = 'fossasia';
 var lastTwitterClickHandler;
 enableWheel();
+var fbPosts;
 
 $(document).ready(function() {
     
-    // Load Twitter
+    // ** LOAD TWITTER **
     var configProfile = {
       "profile": {"screenName": screenName},
       "domId": 'sm-tweets',
@@ -74,8 +75,45 @@ $(document).ready(function() {
         declareTwitterUpNextEvents();
     });
     
-    // Load Facebook
-    // How though?
+    /*// ** LOAD FACEBOOK **
+    $.ajax({
+        url: 'http://littlethings.webspawn.com/fossasia/rss-bridge/?action=display&bridge=Facebook&bridge=Facebook&u=fossasia&format=Json',
+        method: 'GET',
+        
+        success: function(data) {
+            var re = /http(?:s)?\:\/\/(?:www\.)?facebook\.com(?:\/)+(?:(\w+)\/)?(\w+)(?:\/a\.\d+\.\d+\.\d+\/)?\/?(\d+)/g;
+            var linkElems = [];
+            var uID = 126893747338271; // Hard-coded for simplicity, despite being bad practice
+            
+            var makeLinkElem = function(uID, pID) {
+                return '<div class=\"fb-post\" data-href=\"https://www.facebook/' + uID + '/posts/' + pID + '/\"></div>';
+            };
+            
+            for (var i = 0; i < data.length; i++) {
+                var uri = data[i].uri;
+                var matches = re.exec(uri);
+                var pID;
+                
+                try {
+                    pID = matches[3];
+                }
+                catch (e) {
+                    console.log(e);
+                }
+                
+                var link = makeLinkElem(uID, pID);
+                linkElems.push(link);
+                re.lastIndex = 0;
+            }
+            
+            /*for (var i = 0; i < linkElems.length; i++) {
+                var elem = $('#social-media #sm-pane .fb .posts ul').append('<li>' + linkElems[i] + '</li>');
+                //elem.on('load', function() { FB.XFBML.parse(event.target); });
+            }
+            
+            fbPosts = linkElems;
+        }*/
+    });
 });
 
 $('#social-media #sm-sidebar li').click(function(event) {
@@ -136,22 +174,20 @@ function enableWheel() {
             }
         }
         
-        //if ($(event.target).is('div.panel')) {
-            var data2 = detectWheel(eo, 100);
-            
-            if (data2.dominant == 'down') {
-                var x = $($('#sm-pane > ul > li')[$('#sm-pane > ul > li > div.' + smCurrentPane).parent().index() + 1]).children('div').attr('class').split(' ')[0];
-                smScrollTo(x);
-                $('#social-media #sm-pane').unbind('wheel');
-                setTimeout(function() { enableWheel(); }, 1000);
-            }
-            else if (data2.dominant == 'up') {
-                var x = $($('#sm-pane > ul > li')[$('#sm-pane > ul > li > div.' + smCurrentPane).parent().index() - 1]).children('div').attr('class').split(' ')[0];
-                smScrollTo(x);
-                $('#social-media #sm-pane').unbind('wheel');
-                setTimeout(function() { enableWheel(); }, 1000);
-            }
-        //}
+        var data2 = detectWheel(eo, 100);
+
+        if (data2.dominant == 'down') {
+            var x = $($('#sm-pane > ul > li')[$('#sm-pane > ul > li > div.' + smCurrentPane).parent().index() + 1]).children('div').attr('class').split(' ')[0];
+            smScrollTo(x);
+            $('#social-media #sm-pane').unbind('wheel');
+            setTimeout(function() { enableWheel(); }, 1000);
+        }
+        else if (data2.dominant == 'up') {
+            var x = $($('#sm-pane > ul > li')[$('#sm-pane > ul > li > div.' + smCurrentPane).parent().index() - 1]).children('div').attr('class').split(' ')[0];
+            smScrollTo(x);
+            $('#social-media #sm-pane').unbind('wheel');
+            setTimeout(function() { enableWheel(); }, 1000);
+        }
     });
 }
 

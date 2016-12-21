@@ -380,7 +380,7 @@ button:active, button:focus {
           width: 100%;
           height: 100%;
           background: black;
-          opacity: 0.25; }
+          opacity: 0.3; }
         #social-media #sm-pane div.panel.github div.github-widget {
           position: absolute;
           border: none;
@@ -409,7 +409,7 @@ button:active, button:focus {
           position: relative;
           top: 50%;
           left: 50%;
-          transform: translateX(-50%); }
+          transform: translate(-50%, -50%); }
       #social-media #sm-pane div.panel.youtube {
         background: #b31217; }
         #social-media #sm-pane div.panel.youtube .vid-wrapper {
@@ -454,6 +454,9 @@ button:active, button:focus {
           -ms-transform: translate(-50%);
           transform: translate(-50%); }
 
+/*.gecko .gplus .wrapper > div {
+    transform: translate(-50%, -50%) !important;
+}*/
 @-webkit-keyframes darkFlash {
   0% {
     background: #DDD; }
